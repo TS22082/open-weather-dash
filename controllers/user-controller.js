@@ -1,6 +1,10 @@
 const db = require("../models");
 
+// User controllers will check for a user session and
+// will return empty object if not authenticated
+
 module.exports = {
+  // Updates zip code. Must be passed a user id and zip code
   updateZip: (req, res) => {
     !req.user
       ? res.json({})
@@ -9,7 +13,7 @@ module.exports = {
           { where: { id: req.body.id } }
         ).then((dbUser) => res.send(dbUser));
   },
-
+  // Returns user data from session.
   getData: (req, res) => {
     !req.user
       ? res.json({})

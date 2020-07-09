@@ -1,8 +1,9 @@
+// Configuration
 const express = require("express");
 const router = express.Router();
-const db = require("../models");
 const passport = require("../config/passport");
 
+// Controllers
 const { login, signUp, logout } = require("../controllers/auth-controller");
 const { updateZip, getData } = require("../controllers/user-controller");
 
@@ -24,7 +25,7 @@ router.post("/api/signup", signUp);
 
 router.get("/logout", logout);
 
-// Set Zip route
+// Update Zip route
 // Route: http://localhost:3000/logout
 // Type: POST
 
