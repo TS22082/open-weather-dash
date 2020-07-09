@@ -3,8 +3,15 @@ $(document).ready(function () {
   const instance = M.Modal.init(elem, { dismissible: false });
   instance.open();
 
-  $("#registerForm").on("submit", function (e) {
+  $("#loginForm").on("submit", function (e) {
     e.preventDefault();
     console.log("score");
+
+    const newUser = {
+      email: $("#password").val().trim(),
+      password: $("#password").val().trim(),
+    };
   });
 });
+
+const loginUser = () => {};
