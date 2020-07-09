@@ -5,7 +5,7 @@ module.exports = {
     res.json({ email: req.user.email, id: req.user.id });
   },
 
-  signUp: async (req, res) => {
+  register: async (req, res) => {
     try {
       await db.User.create({
         email: req.body.email,

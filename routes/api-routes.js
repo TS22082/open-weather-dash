@@ -4,7 +4,7 @@ const router = express.Router();
 const passport = require("../config/passport");
 
 // Controllers
-const { login, signUp, logout } = require("../controllers/auth-controller");
+const { login, register, logout } = require("../controllers/auth-controller");
 const { updateZip, getData } = require("../controllers/user-controller");
 
 // Login route
@@ -14,10 +14,10 @@ const { updateZip, getData } = require("../controllers/user-controller");
 router.post("/api/login", passport.authenticate("local"), login);
 
 // Signup route
-// Route: http://localhost:3000/api/signup
+// Route: http://localhost:3000/api/register
 // Type: POST
 
-router.post("/api/signup", signUp);
+router.post("/api/register", register);
 
 // Logout route
 // Route: http://localhost:3000/logout
