@@ -26,7 +26,6 @@ module.exports = function (sequelize, DataTypes) {
       bcrypt.genSaltSync(10),
       (err, salty) => {
         if (err) throw err;
-        console.log(salty);
       }
     );
   });
