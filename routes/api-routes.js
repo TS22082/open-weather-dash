@@ -40,9 +40,10 @@ router.get("/logout", (req, res) => {
 router.post("/api/zip", (req, res) => {
   !req.user
     ? res.json({})
-    : db.User.update(req.body, { where: { id: req.body.id } }).then((dbUser) =>
-        res.send(dbUser)
-      );
+    : db.User.update(
+        { zip: req.body.zip },
+        { where: { id: req.body.id } }
+      ).then((dbUser) => res.send(dbUser));
 });
 
 module.exports = router;
