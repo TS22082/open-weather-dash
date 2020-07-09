@@ -46,4 +46,18 @@ router.post("/api/zip", (req, res) => {
       ).then((dbUser) => res.send(dbUser));
 });
 
+// Get user info
+// Route: http://localhost:3000/api/dashboard
+// Type: GET
+
+router.get("/api/dashboard", (req, res) => {
+  !req.user
+    ? res.json({})
+    : res.json({
+        email: req.user.email,
+        userId: req.user.id,
+        zip: req.user.zip,
+      });
+});
+
 module.exports = router;
