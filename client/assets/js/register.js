@@ -5,6 +5,23 @@ $(document).ready(function () {
 
   $("#registerForm").on("submit", function (e) {
     e.preventDefault();
-    console.log("score");
+    const newUser = {
+      email: $("#email").val().trim(),
+      password: $("#password").val().trim(),
+    };
+    registerUser(newUser).then(() => location.replace("/"));
   });
 });
+
+const registerUser = (userObj) => {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: "POST",
+      url: "/api/register",
+      data: userObj,
+    }).then(
+      (res) => resolve(res),
+      (err) => reject(err)
+    );
+  });
+};
