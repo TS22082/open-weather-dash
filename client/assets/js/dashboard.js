@@ -7,7 +7,10 @@ $(document).ready(function () {
     if (!data.zip) {
       console.log("needs zip");
     } else {
-      getWeather().then((res) => console.log(res));
+      getWeather().then((res) => {
+        $("#cityName").text(res.name);
+        console.log(res);
+      });
     }
   });
 });

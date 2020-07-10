@@ -9,7 +9,7 @@ module.exports = {
     } else {
       try {
         const response = await axios.get(
-          `${base_url}?zip=${req.user.zip},us&appid=${process.env.WEATHER_KEY}`
+          `${base_url}?zip=${req.user.zip},us&units=imperial&appid=${process.env.WEATHER_KEY}`
         );
         res.send(response.data);
       } catch (err) {
