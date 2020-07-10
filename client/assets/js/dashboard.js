@@ -4,6 +4,11 @@ $(document).ready(function () {
 
   getUserData().then((data) => {
     console.log(data);
+    if (!data.zip) {
+      console.log("needs zip");
+    } else {
+      getWeather().then((res) => console.log(res));
+    }
   });
 });
 
@@ -14,6 +19,17 @@ const getUserData = () => {
       url: "/api/dashboard",
     }).then((userInfo) => {
       resolve(userInfo);
+    });
+  });
+};
+
+const getWeather = () => {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: "GET",
+      url: "/api/weather",
+    }).then((response) => {
+      resolve(response);
     });
   });
 };
