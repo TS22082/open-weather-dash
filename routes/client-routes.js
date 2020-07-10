@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
   if (req.user) {
     res.redirect("/dashboard");
   }
-  res.sendFile(path.join(__dirname, "../client/register.html"));
+  res.sendFile(path.join(__dirname, "../client/splash.html"));
 });
 
 router.get("/login", (req, res) => {
