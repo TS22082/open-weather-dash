@@ -8,10 +8,20 @@ $(document).ready(function () {
     console.log("score");
 
     const newUser = {
-      email: $("#password").val().trim(),
+      email: $("#email").val().trim(),
       password: $("#password").val().trim(),
     };
+
+    loginUser(newUser).then(() => window.location.replace("/dashboard"));
   });
 });
 
-const loginUser = () => {};
+const loginUser = (userObj) => {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: "POST",
+      url: "/api/login",
+      data: userObj,
+    }).then(resolve({ msg: "success" }), reject({ ms: "error" }));
+  });
+};
