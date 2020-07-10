@@ -1,6 +1,7 @@
 $(document).ready(function () {
   $(".parallax").parallax();
   $(".sidenav").sidenav();
+
   getUserData().then((data) => {
     console.log(data);
   });
