@@ -51,7 +51,10 @@ const loginUser = (userObj) => {
       type: "POST",
       url: "/api/login",
       data: userObj,
-    }).then(resolve({ msg: "success" }));
+    }).then(
+      (res) => resolve({ msg: "success" }),
+      (err) => reject(err)
+    );
   });
 };
 
