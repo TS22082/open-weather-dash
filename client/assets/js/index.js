@@ -28,11 +28,11 @@ $(document).ready(function () {
     registerUser(newUser).then(() => location.replace("/"));
   });
 
-  $("#signupBtn").on("click", function () {
+  $(".signupBtn").on("click", function () {
     registerModalInstance.open();
   });
 
-  $("#loginBtn").on("click", function () {
+  $(".loginBtn").on("click", function () {
     loginModalInstance.open();
   });
 
