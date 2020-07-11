@@ -14,7 +14,7 @@ $(document).ready(function () {
         $("#cityName").text(res.name);
         $("#tempText").text(`${Math.round(res.main.temp)} F°`);
         $("#humidityText").text(`${Math.round(res.main.humidity)} %`);
-        $("#wspeedText").text(res.wind.speed);
+        $("#wspeedText").text(`${Math.round(res.wind.speed)} mph`);
         $("#wdirText").text(convertDegToDirection(res.wind.deg));
         $("#sunriseText").text(convertToTime(res.sys.sunrise));
         $("#sunsetText").text(convertToTime(res.sys.sunset));
