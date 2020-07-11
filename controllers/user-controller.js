@@ -10,8 +10,11 @@ module.exports = {
       ? res.json({})
       : db.User.update(
           { zip: req.body.zip },
-          { where: { id: req.body.id } }
-        ).then((dbUser) => res.send(dbUser));
+          { where: { id: req.user.id } }
+        ).then((result) => {
+          req.user.zip = parseInt(req.body.zip);
+          res.send(result);
+        });
   },
   // Returns user data from session.
   getData: (req, res) => {

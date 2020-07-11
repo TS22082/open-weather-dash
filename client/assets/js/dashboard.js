@@ -2,10 +2,13 @@ $(document).ready(function () {
   $(".parallax").parallax();
   $(".sidenav").sidenav();
 
+  const zipModal = document.getElementById("zipModal");
+  const zipModalInstance = M.Modal.init(zipModal, { dismissible: false });
+
   getUserData().then((data) => {
-    console.log(data);
     if (!data.zip) {
-      console.log("needs zip");
+      $(".mainContent").hide();
+      zipModalInstance.open();
     } else {
       getWeather().then((res) => {
         $("#cityName").text(res.name);
@@ -18,6 +21,18 @@ $(document).ready(function () {
       });
     }
   });
+
+  $("#zipForm").on("submit", function (e) {
+    e.preventDefault();
+
+    const zipData = {
+      zip: $("#zipInput").val().trim(),
+    };
+
+    setZip(zipData)
+      .then(() => window.location.replace("/"))
+      .catch((err) => console.log(err));
+  });
 });
 
 const getUserData = () => {
@@ -28,6 +43,19 @@ const getUserData = () => {
     }).then((userInfo) => {
       resolve(userInfo);
     });
+  });
+};
+
+const setZip = (zip) => {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: "POST",
+      url: "/api/zip",
+      data: zip,
+    }).then(
+      (res) => resolve(res),
+      (err) => reject(err)
+    );
   });
 };
 
